@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Исходная ссылка</th>
+                <th scope="col">Короткая ссылка</th>
+                <th scope="col">Дата создания</th>
+                <th scope="col">Количество переходов</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for url in urls_list %}
+                <tr>
+                    <th scope="row">{{ url.id }}</th>
+                    <td>
+                        <a href="{{ url.url }}">
+                            {{ url.url }}
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ url.short }}">
+                            {{ url.short }}
+                        </a>
+                    </td>
+                    <td>
+                        {{ url.date.strftime("%d.%m.%Y") }} {{ url.date.strftime("%H:%M:%S") }}
+                    </td>
+                    <td>{{ url.visits }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+    <form method="POST" action="" novalidate>
+        {{ form.csrf_token }}
+        <div class="mb-3">
+            <label for="original-url" class="form-label">{{ form.url.label }}</label>
+            {{ form.url(class="form-control") }}
+            {% for error in form.url.errors %}
+                <div class="alert alert-danger" role="alert">
+                    <span>{{ error }}</span>
+                </div>
+            {% endfor %}
+        </div>
+        {{ form.submit(class="btn btn-primary mb-3") }}
+    </form>
+{% endblock %}
